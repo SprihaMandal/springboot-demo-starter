@@ -1,8 +1,6 @@
 package com.example.demo;
 
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 
 @RestController
@@ -27,8 +25,15 @@ public class HelloController {
     }
 
     @GetMapping("/bye")
-    public String getMethodName(@RequestParam String user) {
+    public String sayBye(@RequestParam String user) {
         return "Bye, "+ user;
     }
+
+    
+    @PostMapping("/register")
+    public String registerUser(@RequestBody User user) {
+        return "Registered: " + user.username + ", " + user.email;
+    }
+    
     
 }
