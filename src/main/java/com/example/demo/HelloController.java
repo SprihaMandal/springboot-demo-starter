@@ -1,10 +1,14 @@
 package com.example.demo;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 
 @RestController
 public class HelloController {
+
+     @Autowired
+    private UserRepository userRepository;
 
     // Simple GET endpoint
     @GetMapping("/hello")
@@ -30,9 +34,15 @@ public class HelloController {
     }
 
     
+    // @PostMapping("/register")
+    // public String registerUser(@RequestBody User user) {
+    //     return "Registered: " + user.username + ", " + user.email;
+    // }
+
     @PostMapping("/register")
     public String registerUser(@RequestBody User user) {
-        return "Registered: " + user.username + ", " + user.email;
+        userRepository.save(user);
+        return "User registered in MongoDB: " + user.username;
     }
     
     
