@@ -47,6 +47,8 @@ public class HelloController {
         return "User registered in MongoDB: " + user.username;
     }
     
+
+    //fetch user from mongo db
     @GetMapping("/users")
     public List<User> getAllUsers() {
     return userRepository.findAll();    
