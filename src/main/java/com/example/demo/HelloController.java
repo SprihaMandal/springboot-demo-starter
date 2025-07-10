@@ -1,5 +1,7 @@
 package com.example.demo;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -45,5 +47,9 @@ public class HelloController {
         return "User registered in MongoDB: " + user.username;
     }
     
-    
+    @GetMapping("/users")
+    public List<User> getAllUsers() {
+    return userRepository.findAll();    
+    }
+
 }
