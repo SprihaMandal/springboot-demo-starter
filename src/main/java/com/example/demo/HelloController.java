@@ -1,8 +1,10 @@
 package com.example.demo;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -53,5 +55,17 @@ public class HelloController {
     public List<User> getAllUsers() {
     return userRepository.findAll();    
     }
+
+@GetMapping("/users/{id}")
+public ResponseEntity<?> getUserById(@PathVariable String id) {
+    Optional<User> user = userRepository.findById(id);
+    
+    if (user.isPresent()) {
+        return ResponseEntity.ok(user.get());
+    } else {
+        return ResponseEntity.status(404).body("User not found");
+    }
+}
+
 
 }
