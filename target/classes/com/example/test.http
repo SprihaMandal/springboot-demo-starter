@@ -1,8 +1,10 @@
-### POST with empty username and invalid email
-POST http://localhost:8080/register
+
+PUT http://localhost:8080/users/6872919e62d9b29c35d6efc8
 Content-Type: application/json
 
 {
-  "username": "",
-  "email": "not-an-email"
+  "username" : "spriha mandal",
+  "email": "spriha1234@gmail.com"
 }
+
+
